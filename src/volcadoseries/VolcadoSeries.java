@@ -45,49 +45,54 @@ public class VolcadoSeries implements Runnable {
 
     public static void main(String[] args) {
 
-        Runnable proceso1;
-        Runnable proceso2 = null;
-        Runnable proceso3 = null;
-        Runnable proceso4 = null;
+        Thread p1 = null;
+        Thread p2 = null;
+        Thread p3 = null;
+        Thread p4 = null;
 
         int numChar = 'A';
         char caracter = (char) numChar;
         while (caracter <= 'Z') {
-//            while(p1.isAlive() || p2.isAlive() || p3.isAlive() || p4.isAlive()){
-//                //si hay una muerta creamos otra y así con todas
-//            }
-            proceso1 = new VolcadoSeries(caracter, new VolDanko());
-            caracter = (char) ++numChar;
 
-            if (caracter <= 'Z') {
-                proceso2 = new VolcadoSeries(caracter, new VolDanko());
-                caracter = (char) ++numChar;
-
+            if (p1 == null || !p1.isAlive()) {
+                if (caracter <= 'Z') {
+                    Runnable proceso1 = new VolcadoSeries(caracter, new VolDanko());
+                    p1 = new Thread(proceso1);
+                    p1.start();
+                    caracter = (char) ++numChar;
+                }
             }
 
-            if (caracter <= 'Z') {
-                proceso3 = new VolcadoSeries(caracter, new VolDanko());
-                caracter = (char) ++numChar;
+            if (p2 == null || !p2.isAlive()) {
+                if (caracter <= 'Z') {
+                    Runnable proceso2 = new VolcadoSeries(caracter, new VolDanko());
+                    p2 = new Thread(proceso2);
+                    p2.start();
+                    caracter = (char) ++numChar;
 
+                }
             }
-            if (caracter <= 'Z') {
-                proceso4 = new VolcadoSeries(caracter, new VolDanko());
-                caracter = (char) ++numChar;
 
+            if (p3 == null || !p3.isAlive()) {
+                if (caracter <= 'Z') {
+                    Runnable proceso3 = new VolcadoSeries(caracter, new VolDanko());
+                    p3 = new Thread(proceso3);
+                    p3.start();
+                    caracter = (char) ++numChar;
+
+                }
             }
 
-            Thread p1 = new Thread(proceso1);
-            p1.start();
-            Thread p2 = new Thread(proceso2);
-            p2.start();
-            Thread p3 = new Thread(proceso3);
-            p3.start();
-            Thread p4 = new Thread(proceso4);
-            p4.start();
-            
-            
+            if (p4 == null || !p4.isAlive()) {
+                if (caracter <= 'Z') {
+                    Runnable proceso4 = new VolcadoSeries(caracter, new VolDanko());
+                    p4 = new Thread(proceso4);
+                    p4.start();
+                    caracter = (char) ++numChar;
+
+                }
+            }
         }
-        //hebrasssssss
 //         seriesDanko.getServidoresSeriesDanko("http://seriesdanko.com/capitulo.php?serie=2148&temp=1&cap=%2067", new Capitulo(11684, "", 66,""));
     }
 
