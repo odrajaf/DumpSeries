@@ -40,7 +40,7 @@ public class VolcadoSeries {
             caracter = (char) ++numChar;
 
         }
-        //hebras
+        //hebrasssssss
 //         seriesDanko.getServidoresSeriesDanko("http://seriesdanko.com/capitulo.php?serie=2148&temp=1&cap=%2067", new Capitulo(11684, "", 66,""));
     }
 
