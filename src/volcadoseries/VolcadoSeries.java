@@ -45,26 +45,27 @@ public class VolcadoSeries implements Runnable {
 
     public static void main(String[] args) {
 
-        int numHilos = 10;
-        Thread[] p1 = new Thread[numHilos];
-
-        int numChar = 'A';
-        char caracter = (char) numChar;
-        while (caracter <= 'Z') {
-
-            for (int i = 0; i < numHilos; i++) {
-                if (p1[i] == null || !p1[i].isAlive()) {
-                    if (caracter <= 'Z') {
-                        Runnable proceso1 = new VolcadoSeries(caracter, new VolDanko());
-                        p1[i] = new Thread(proceso1);
-                        p1[i].start();
-                        caracter = (char) ++numChar;
-                    }
-                }
-            }
-
-        }
-//         seriesDanko.getServidoresSeriesDanko("http://seriesdanko.com/capitulo.php?serie=2148&temp=1&cap=%2067", new Capitulo(11684, "", 66,""));
+//        int numHilos = 10;
+//        Thread[] p1 = new Thread[numHilos];
+//
+//        int numChar = 'A';
+//        char caracter = (char) numChar;
+//        while (caracter <= 'Z') {
+//
+//            for (int i = 0; i < numHilos; i++) {
+//                if (p1[i] == null || !p1[i].isAlive()) {
+//                    if (caracter <= 'Z') {
+//                        Runnable proceso1 = new VolcadoSeries(caracter, new VolDanko());
+//                        p1[i] = new Thread(proceso1);
+//                        p1[i].start();
+//                        caracter = (char) ++numChar;
+//                    }
+//                }
+//            }
+//
+//        }
+         VolDanko seriesDankocapError = new VolDanko();
+         seriesDankocapError.getServidoresSeriesDanko("http://seriesdanko.com/capitulo.php?serie=137&temp=5&cap=10", new Capitulo(15343, "", 10,""));
     }
 
     public static String getContenidoHTML(String urlWeb) {
