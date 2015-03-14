@@ -45,27 +45,27 @@ public class VolcadoSeries implements Runnable {
 
     public static void main(String[] args) {
 
-//        int numHilos = 10;
-//        Thread[] p1 = new Thread[numHilos];
-//
-//        int numChar = 'A';
-//        char caracter = (char) numChar;
-//        while (caracter <= 'Z') {
-//
-//            for (int i = 0; i < numHilos; i++) {
-//                if (p1[i] == null || !p1[i].isAlive()) {
-//                    if (caracter <= 'Z') {
-//                        Runnable proceso1 = new VolcadoSeries(caracter, new VolDanko());
-//                        p1[i] = new Thread(proceso1);
-//                        p1[i].start();
-//                        caracter = (char) ++numChar;
-//                    }
-//                }
-//            }
-//
-//        }
-         VolDanko seriesDankocapError = new VolDanko();
-         seriesDankocapError.getServidoresSeriesDanko("http://seriesdanko.com/capitulo.php?serie=137&temp=5&cap=10", new Capitulo(15343, "", 10,""));
+        int numHilos = 10;
+        Thread[] p1 = new Thread[numHilos];
+
+        int numChar = 'A';
+        char caracter = (char) numChar;
+        while (caracter <= 'Z') {
+
+            for (int i = 0; i < numHilos; i++) {
+                if (p1[i] == null || !p1[i].isAlive()) {
+                    if (caracter <= 'Z') {
+                        Runnable proceso1 = new VolcadoSeries(caracter, new VolDanko());
+                        p1[i] = new Thread(proceso1);
+                        p1[i].start();
+                        caracter = (char) ++numChar;
+                    }
+                }
+            }
+
+        }
+//         VolDanko seriesDankocapError = new VolDanko();
+//         seriesDankocapError.getServidoresSeriesDanko("http://seriesdanko.com/capitulo.php?serie=137&temp=5&cap=10", new Capitulo(15343, "", 10,""));
     }
 
     public static String getContenidoHTML(String urlWeb) {
@@ -137,7 +137,7 @@ public class VolcadoSeries implements Runnable {
         String aDevolver = "";
         try {
             if (auxUrl.length > 0) {
-                int indi = url.indexOf("www.");
+                int indi = url.indexOf("http://www.");
                 if (indi != -1) {
                     aDevolver = auxUrl[1];
                 } else {
