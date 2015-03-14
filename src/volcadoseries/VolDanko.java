@@ -89,8 +89,8 @@ public class VolDanko {
                 }
                 ///////////////
 
-                System.out.println(url_video);
-                System.out.println(servidor);
+//                System.out.println(url_video);
+//                System.out.println(servidor);
 //                System.out.println(idioma);
 //                System.out.println(calidad);
             }
