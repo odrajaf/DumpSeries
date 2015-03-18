@@ -146,7 +146,7 @@ public class VolcadoSeries implements Runnable {
         String aDevolver = "";
         try {
             if (auxUrl.length > 0) {
-                int indi = url.indexOf("www.");
+                int indi = url.indexOf("http://www.");
                 if (indi != -1) {
                     aDevolver = auxUrl[1];
                 } else {
