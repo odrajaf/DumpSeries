@@ -45,27 +45,36 @@ public class VolcadoSeries implements Runnable {
 
     public static void main(String[] args) {
 
-//        int numHilos = 10;
-//        Thread[] p1 = new Thread[numHilos];
-//
-//        int numChar = 'A';
-//        char caracter = (char) numChar;
-//        while (caracter <= 'Z') {
-//
-//            for (int i = 0; i < numHilos; i++) {
-//                if (p1[i] == null || !p1[i].isAlive()) {
-//                    if (caracter <= 'Z') {
-//                        Runnable proceso1 = new VolcadoSeries(caracter, new VolDanko());
-//                        p1[i] = new Thread(proceso1);
-//                        p1[i].start();
-//                        caracter = (char) ++numChar;
-//                    }
-//                }
-//            }
-//
-//        }
-         VolDanko seriesDankocapError = new VolDanko();
-         seriesDankocapError.getServidoresSeriesDanko("http://seriesdanko.com/capitulo.php?serie=137&temp=5&cap=10", new Capitulo(15343, "", 10,""));
+        int numHilos = 10;
+        Thread[] p1 = new Thread[numHilos];
+
+        int numChar = 'A';
+        char caracter = (char) numChar;
+
+        //leemos el 0 primero
+        if (p1[0] == null || !p1[0].isAlive()) {
+            Runnable proceso0 = new VolcadoSeries('0', new VolDanko());
+            p1[0] = new Thread(proceso0);
+            p1[0].start();
+        }
+        ///
+        
+        while (caracter <= 'Z') {
+
+            for (int i = 0; i < numHilos; i++) {
+                if (p1[i] == null || !p1[i].isAlive()) {
+                    if (caracter <= 'Z') {
+                        Runnable proceso1 = new VolcadoSeries(caracter, new VolDanko());
+                        p1[i] = new Thread(proceso1);
+                        p1[i].start();
+                        caracter = (char) ++numChar;
+                    }
+                }
+            }
+
+        }
+//         VolDanko seriesDankocapError = new VolDanko();
+//         seriesDankocapError.getServidoresSeriesDanko("http://seriesdanko.com/capitulo.php?serie=137&temp=5&cap=10", new Capitulo(15343, "", 10,""));
     }
 
     public static String getContenidoHTML(String urlWeb) {
